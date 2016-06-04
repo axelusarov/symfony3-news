@@ -1,0 +1,8 @@
+{% block menu %}
+    <ul>
+        <li><a href="{{ path('homepage') }}">Main page</a></li>
+        <li><a href={{ path('new_article') }}>Add new article</a></li>
+        <li><a href={{ path('register_user') }}>Register</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+{% endblock %}

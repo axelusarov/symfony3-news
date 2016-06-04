@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registration form</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username) }}
+    </div>
+
+    <div>
+        {{ form_label(form.password) }}
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password) }}
+    </div>
+
+    <div>
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+
+    <div>
+        {{ form_label(form.firstName) }}
+        {{ form_errors(form.firstName) }}
+        {{ form_widget(form.firstName) }}
+    </div>
+
+    <div>
+        {{ form_label(form.lastName) }}
+        {{ form_errors(form.lastName) }}
+        {{ form_widget(form.lastName) }}
+    </div>
+
+    {{ form_end(form) }}
+{%  endblock %}
+

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create new Article</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div>
+        {{ form_label(form.previewText) }}
+        {{ form_errors(form.previewText) }}
+        {{ form_widget(form.previewText) }}
+    </div>
+
+    <div>
+        {{ form_label(form.fullText) }}
+        {{ form_errors(form.fullText) }}
+        {{ form_widget(form.fullText) }}
+    </div>
+
+    {{ form_end(form) }}
+
+    Author: {{ username }}
+{%  endblock %}
+

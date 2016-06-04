@@ -6,38 +6,106 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\User;
+//use AppBundle\Entity\User;
+use AppBundle\Entity\Article;
+use AppBundle\Form\Type\UserType;
+use AppBundle\Form\Type\AddArticleType;
 
 class DefaultController extends Controller
 {
     /**
+     * @return Response $response
+     *
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function showAllNewsAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->getRepository('AppBundle:Article')->findAll();
+
+        return $this->render('default/show_all_news.html.twig', [
+            'articles' => $articles
         ]);
     }
 
     /**
-     * @Route("/register")
+     * @param Article $article
+     * @return Response $response
+     *
+     * @Route("/show/{id}", name="show_article")
+     */
+    public function showArticleAction(Article $article)
+    {
+        dump($article);
+        return $this->render('default/show_article.html.twig', [
+            'article' => $article
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response $response
+     *
+     * @Route("/register", name="register_user")
      */
     public function createUserAction(Request $request)
     {
-        $user = new User();
+        $userManager = $this->get('fos_user.user_manager');
+
+        $user = $userManager->createUser();
+        $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // ... perform some action, such as saving the task to the database
+            $user->setPlainPassword($form->get('password')->getData());
+            $user->setEnabled(true);
 
-            return $this->redirectToRoute('task_success');
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return new Response('user "' . $user->getEmail() . '" created');
         }
 
         return $this->render('default/register.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @return Response $response
+     *
+     * @Route("/new", name="new_article")
+     */
+    public function createArticleAction(Request $request)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
+        $article = new Article();
+        $user = $this->getUser();
+        $username = $user->getUserName();
+
+        $form = $this->createForm(AddArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article->setAuthor($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return new Response('new article was created!');
+        }
+
+        return $this->render('default/add_article.html.twig', array(
+            'form' => $form->createView(),
+            'username' => $username,
         ));
     }
 }

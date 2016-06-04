@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for article in articles %}
+        <div>
+            <h2>{{ article.title }}</h2>
+            preview text: {{ article.PreviewText }}<br/>
+            full text: {{ article.fullText }}<br/>
+            autor: {{ article.author }}<br/>
+            published at: {{ article.date |date("d/m/Y h:m:i")}}
+        </div>
+    {% endfor %}
+{% endblock %}

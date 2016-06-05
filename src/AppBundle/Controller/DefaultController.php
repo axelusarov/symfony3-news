@@ -100,7 +100,9 @@ class DefaultController extends Controller
             $em->persist($article);
             $em->flush();
 
-            return new Response('new article was created!');
+            return $this->render('default\article_created.html.twig', array(
+                'title' => $article->getTitle()
+            ));
         }
 
         return $this->render('default/add_article.html.twig', array(

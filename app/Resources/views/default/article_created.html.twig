@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h2>Article '{{ title }}' was successfully created.</h2><br/>
+
+        <div class="row">
+            <div class="col-xs-12 centered-block">
+                <a href="{{ path('new_article') }}" class="btn btn-danger">Create another one</a>
+                <a href="{{ path('homepage') }}" class="btn btn-default">Go to Homepage</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+

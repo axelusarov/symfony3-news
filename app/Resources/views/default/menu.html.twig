@@ -1,8 +1,12 @@
 {% block menu %}
-    <ul>
-        <li><a href="{{ path('homepage') }}">Main page</a></li>
-        <li><a href={{ path('new_article') }}>Add new article</a></li>
-        <li><a href={{ path('register_user') }}>Register</a></li>
-        <li><a href="/login">Login</a></li>
-    </ul>
+        <div class="row header">
+            <nav id="top-menu" class="col-sm-12">
+                <ul>
+                    <li><a href="{{ path('homepage') }}">Main page</a></li>
+                    <li><a href="{{ path('new_article') }}">New Article</a></li>
+                    <li><a href="{{ path('register_user') }}">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
 {% endblock %}

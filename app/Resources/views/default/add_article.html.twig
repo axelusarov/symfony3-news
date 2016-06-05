@@ -7,25 +7,26 @@
     {{ form_errors(form) }}
 
     <div>
-        {{ form_label(form.title) }}
+        {{ form_label(form.title, 'Title:') }}
         {{ form_errors(form.title) }}
-        {{ form_widget(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
     </div>
 
     <div>
-        {{ form_label(form.previewText) }}
-        {{ form_errors(form.previewText) }}
-        {{ form_widget(form.previewText) }}
+        <label for="add_article_author">Author:</label>
+        <input type="text" class="form-control" value="{{ username }}" id="add_article_author" disabled>
     </div>
 
     <div>
-        {{ form_label(form.fullText) }}
+        {{ form_label(form.fullText, 'Full text:') }}
         {{ form_errors(form.fullText) }}
-        {{ form_widget(form.fullText) }}
+        {{ form_widget(form.fullText, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div>
+        {{ form_widget(form.add, {'attr': {'class': 'btn btn-success'}}) }}
     </div>
 
     {{ form_end(form) }}
-
-    Author: {{ username }}
 {%  endblock %}
 

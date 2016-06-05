@@ -26,14 +26,7 @@ class Article
     protected $title;
 
     /**
-     * @ORM\Column(type="string", name="preview_text")
-     * @Assert\NotBlank
-     * @Assert\Length(min=3, max=500)
-     */
-    protected $previewText;
-
-    /**
-     * @ORM\Column(type="string", name="full_text")
+     * @ORM\Column(type="text", name="full_text")
      * @Assert\NotBlank
      * @Assert\Length(min=3, max=5000)
      */
@@ -62,30 +55,6 @@ class Article
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set previewText
-     *
-     * @param string $previewText
-     *
-     * @return Article
-     */
-    public function setPreviewText($previewText)
-    {
-        $this->previewText = $previewText;
-
-        return $this;
-    }
-
-    /**
-     * Get previewText
-     *
-     * @return string
-     */
-    public function getPreviewText()
-    {
-        return $this->previewText;
     }
 
     /**

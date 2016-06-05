@@ -1,0 +1,26 @@
+{
+  "name": "symfony3-news",
+  "homepage": "https://github.com/axelusarov/symfony3-news",
+  "authors": [
+    "Aleksannd Usarov <axel.usarov@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6"
+  }
+}

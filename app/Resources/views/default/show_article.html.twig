@@ -4,7 +4,7 @@
             <div class="col-xs-12">
                 <div id="article-block">
                     <span id="article-title" class="h2">{{ article.title }}</span>
-                    <div id="article-info">Posted by <a href="#">{{ article.author }}</a> on {{ article.date |date("d/m/Y h:m:i")}}</div>
+                    <div id="article-info">Posted by <strong>{{ article.author }}</strong> on {{ article.date |date("d/m/Y h:m:i")}}</div>
                     <div id="article-content">
                     </div>
                     <p>{{ article.fullText }}</p>

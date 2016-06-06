@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Article <strong>"{{ article.title }}"</strong> was successfully deleted.</h2>
+        </div>
+        <div class="col-xs-12 centered-block">
+            <a href="{{ path('homepage') }}" class="btn btn-default text-center">Go to Homepage</a>
+        </div>
+    </div>
+{% endblock %}

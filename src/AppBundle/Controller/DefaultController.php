@@ -66,6 +66,10 @@ class DefaultController extends Controller
             $em->persist($user);
             $em->flush();
 
+            return $this->render('default/user_created.html.twig', [
+                'userEmail' => $user->getEmail(),
+                'userName' => $user->getUsername()
+            ]);
             return new Response('user "' . $user->getEmail() . '" created');
         }
 
@@ -109,5 +113,25 @@ class DefaultController extends Controller
             'form' => $form->createView(),
             'username' => $username,
         ));
+    }
+
+    /**
+     * @param Request $request
+     * @param Article $article
+     * @return Response $response
+     *
+     * @Route("/delete/{id}", name="delete_article")
+     */
+    public function deleteArticleAction(Request $request, Article $article)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+
+        return $this->render('default/article_removed.html.twig', [
+            'article' => $article
+        ]);
     }
 }

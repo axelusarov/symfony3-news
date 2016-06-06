@@ -1,41 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Registration form</h1>
+    <div class="row">
+        <div class="col-xs-7 col-xs-offset-3">
+            <h1>Registration</h1>
 
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
 
-    <div>
-        {{ form_label(form.username) }}
-        {{ form_errors(form.username) }}
-        {{ form_widget(form.username) }}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div>
+                        {{ form_label(form.username, 'Username:') }}
+                        {{ form_errors(form.username) }}
+                        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.email, 'E-mail:') }}
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.password, 'Password:') }}
+                        {{ form_errors(form.password) }}
+                        {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        {{ form_label(form.firstName, 'Firstname:') }}
+                        {{ form_errors(form.firstName) }}
+                        {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.lastName, 'Lastname:') }}
+                        {{ form_errors(form.lastName) }}
+                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 pull-right">
+                    {{ form_widget(form.register, {'attr': {'class': 'btn btn-success pull-right'}}) }}
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
     </div>
-
-    <div>
-        {{ form_label(form.password) }}
-        {{ form_errors(form.password) }}
-        {{ form_widget(form.password) }}
-    </div>
-
-    <div>
-        {{ form_label(form.email) }}
-        {{ form_errors(form.email) }}
-        {{ form_widget(form.email) }}
-    </div>
-
-    <div>
-        {{ form_label(form.firstName) }}
-        {{ form_errors(form.firstName) }}
-        {{ form_widget(form.firstName) }}
-    </div>
-
-    <div>
-        {{ form_label(form.lastName) }}
-        {{ form_errors(form.lastName) }}
-        {{ form_widget(form.lastName) }}
-    </div>
-
-    {{ form_end(form) }}
 {%  endblock %}
 

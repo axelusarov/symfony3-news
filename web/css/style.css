@@ -141,3 +141,6 @@ h1, h2{
 	display: inline-block;
 	text-align: center;
 }
+#article-title sup{
+	font-size: 12px;
+}

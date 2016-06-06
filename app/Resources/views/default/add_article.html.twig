@@ -1,32 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Create new Article</h1>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Create new Article</h1>
 
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
 
-    <div>
-        {{ form_label(form.title, 'Title:') }}
-        {{ form_errors(form.title) }}
-        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            <div>
+                {{ form_label(form.title, 'Title:') }}
+                {{ form_errors(form.title) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div>
+                <label for="add_article_author">Author:</label>
+                <input type="text" class="form-control" value="{{ username }}" id="add_article_author" disabled>
+            </div>
+
+            <div>
+                {{ form_label(form.fullText, 'Full text:') }}
+                {{ form_errors(form.fullText) }}
+                {{ form_widget(form.fullText, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div>
+                {{ form_widget(form.add, {'attr': {'class': 'btn btn-success pull-right'}}) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
     </div>
-
-    <div>
-        <label for="add_article_author">Author:</label>
-        <input type="text" class="form-control" value="{{ username }}" id="add_article_author" disabled>
-    </div>
-
-    <div>
-        {{ form_label(form.fullText, 'Full text:') }}
-        {{ form_errors(form.fullText) }}
-        {{ form_widget(form.fullText, {'attr': {'class': 'form-control'}}) }}
-    </div>
-
-    <div>
-        {{ form_widget(form.add, {'attr': {'class': 'btn btn-success'}}) }}
-    </div>
-
-    {{ form_end(form) }}
 {%  endblock %}
 

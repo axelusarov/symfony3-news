@@ -5,8 +5,14 @@
         {% for article in articles %}
             <div class="col-sm-6">
                 <div id="article-block">
-                    <span id="article-title" class="h2">{{ article.title }}</span>
-                    <div id="article-info">Posted by <a href="#">{{ article.author }}</a> on {{ article.date |date("d/m/Y h:m:i")}} {#February 07, 2013#} &bull; <a href="{{ path('show_article', { 'id': article.id }) }}">Full article</a></div>
+                    <span id="article-title" class="h2">
+                        {{ article.title }}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <sup><a style="" href="delete/{{ article.id }}">(Delete)</a></sup>
+                        {% endif %}
+                    </span>
+
+                    <div id="article-info">Posted by <strong>{{ article.author }}</strong> on {{ article.date |date("d/m/Y h:m:i")}} {#February 07, 2013#} &bull; <a href="{{ path('show_article', { 'id': article.id }) }}">Full article</a></div>
                     <div id="article-content">
                     </div>
                     <p>{{ article.fullText |length > 300 ? article.fullText|slice(0, 300) ~ '...' : article.fullText }}</p>

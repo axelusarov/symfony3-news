@@ -14,7 +14,6 @@ class AddArticleType extends AbstractType
     {
         $builder
             ->add('title')
-//            ->add('previewText')
             ->add('fullText', TextareaType::class)
             ->add('add', SubmitType::class, array('label' => 'Add article'));
     }

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-10 col-md-offset-1">
+            <h2>
+                User with username <strong>'{{ userName }}'</strong> and E-mail <strong>'{{ userEmail }}'</strong> was registered. <br/>
+                Now you can login with your account data.
+            </h2>
+            <br/>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 centered-block">
+                <a href="/login" class="btn btn-danger">Login</a>
+                <a href="{{ path('homepage') }}" class="btn btn-default">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

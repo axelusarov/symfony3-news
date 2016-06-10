@@ -5,39 +5,39 @@
 {% block fos_user_content %}
 
     <div class="row">
-
+        <h1>User login</h1>
         {% if error %}
-            <div class="col-xs-8 col-md-offset-2 alert alert-danger" role="alert">
+            <div class="col-sm-8 col-sm-offset-2 alert alert-danger" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 <span class="sr-only">Error:</span>
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}
 
-            <div class="col-xs-4 col-xs-offset-4">
+            <div class="col-xs-6 col-xs-offset-3">
                 <form class="form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="username">Email:</label>
+                        <label class="control-label col-sm-4" for="username">{{ 'security.login.username'|trans }}:</label>
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" class="form-control" />
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required" id="username" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="pwd">Password:</label>
-                        <div class="col-sm-10">
+                        <label class="control-label col-sm-4" for="password">{{ 'security.login.password'|trans }}:</label>
+                        <div class="col-sm-8">
                             <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Enter password">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-4 col-sm-offset-4">
                             <div class="checkbox">
                                 <label><input type="checkbox" id="remember_me" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans }}</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-10 pull-right">
+                        <div class="col-sm-8 pull-right">
                             <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-danger form-control" />
                         </div>
                     </div>

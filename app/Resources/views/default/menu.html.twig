@@ -1,17 +1,30 @@
 {% block menu %}
         <div class="row header">
-            <nav id="top-menu" class="col-sm-12">
+            <nav id="top-menu" class="col-xs-12">
                 <ul>
                     <li><a href="{{ path('homepage') }}">Main page</a></li>
                     <li><a href="{{ path('new_article') }}">New Article</a></li>
 
                     {% if is_granted('ROLE_USER') %}
-                        <li><a href="/logout">Logout (<strong>{{ app.user.username }}</strong>)</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Logout (<strong>{{ app.user.username }}</strong>)</a></li>
                     {% else %}
                         <li><a href="{{ path('register_user') }}">Register</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
                     {% endif %}
                 </ul>
             </nav>
+
+            {% set enLocale = '' %}
+            {% set ruLocale = '' %}
+            {% if app.request.locale == 'ru' %}
+                {% set ruLocale = 'active' %}
+            {% else %}
+                {% set enLocale = 'active' %}
+            {% endif %}
+
+            <div class="btn-group lang-switcher" role="group" aria-label="set-locale">
+                <a type="button" href="{{ path('set_locale', {"_locale": "en"}) }}" class="btn btn-default {{ enLocale }}">EN</a>
+                <a type="button" href="{{ path('set_locale', {"_locale": "ru"}) }}" class="btn btn-default {{ ruLocale }}">RU</a>
+            </div>
         </div>
 {% endblock %}

@@ -43,8 +43,8 @@ table {
 	border-spacing: 0;
 }
 #site-logo{
-	margin-bottom: 40px;
-	padding: 50px 0;
+	margin-top: 13px;
+	padding: 20px 0;
 	background-color: brown;
 }
 #site-logo span{
@@ -86,10 +86,11 @@ table {
 }
 #top-menu {
 	background-color: #da2f27;
-    position:relative;
+    position:absolute;
     overflow:hidden;
     height:60px;
-    padding:20px 0
+    padding:20px 0;
+	/*width: 90%;*/
 }
 #top-menu ul {
     list-style:none;
@@ -104,7 +105,6 @@ table {
     position:relative;
     left:-50%;
     float:left;
-    /*margin:0 5px;*/
     height:30px;
 }
 #top-menu ul li a {
@@ -145,3 +145,19 @@ h1, h2{
 #article-title sup{
 	font-size: 12px;
 }
+.lang-switcher{
+	float: right;
+	position: absolute;
+	padding-top: 12px;
+	padding-right: 20px;
+	min-width: 90px;
+	height: auto;
+}
+/*
+#top-menu:after{
+	float: right;
+	!*position: relative;*!
+	content: 'content';
+	!*top: 0;*!
+	!*right: 0;*!
+}*/

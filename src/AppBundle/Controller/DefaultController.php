@@ -133,4 +133,18 @@ class DefaultController extends Controller
             'article' => $article
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param $_locale
+     *
+     * @return Response $response
+     *
+     * @Route("/set/{_locale}", name="set_locale", requirements={"_locale": "en|ru"}, defaults={"_locale": "en"})
+     */
+    public function setLanguage(Request $request, $_locale)
+    {
+        $request->getSession()->set('_locale', $_locale);
+        return $this->redirectToRoute('homepage');
+    }
 }

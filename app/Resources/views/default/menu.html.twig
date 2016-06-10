@@ -4,8 +4,13 @@
                 <ul>
                     <li><a href="{{ path('homepage') }}">Main page</a></li>
                     <li><a href="{{ path('new_article') }}">New Article</a></li>
-                    <li><a href="{{ path('register_user') }}">Register</a></li>
-                    <li><a href="/login">Login</a></li>
+
+                    {% if is_granted('ROLE_USER') %}
+                        <li><a href="/logout">Logout (<strong>{{ app.user.username }}</strong>)</a></li>
+                    {% else %}
+                        <li><a href="{{ path('register_user') }}">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

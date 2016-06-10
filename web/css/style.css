@@ -43,6 +43,7 @@ table {
 	border-spacing: 0;
 }
 #site-logo{
+	margin-bottom: 40px;
 	padding: 50px 0;
 	background-color: brown;
 }
@@ -103,8 +104,8 @@ table {
     position:relative;
     left:-50%;
     float:left;
-    margin:0 5px;
-    height:30px
+    /*margin:0 5px;*/
+    height:30px;
 }
 #top-menu ul li a {
     display:block;

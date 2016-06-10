@@ -6,9 +6,9 @@
             <div class="col-sm-6">
                 <div id="article-block">
                     <span id="article-title" class="h2">
-                        {{ article.title }}
+                        <a href="{{ path('show_article', { 'id': article.id }) }}">{{ article.title }}</a>
                         {% if is_granted('ROLE_ADMIN') %}
-                            <sup><a style="" href="delete/{{ article.id }}">(Delete)</a></sup>
+                            <sup><a style="" href="{{ path('delete_article', {'id': article.id}) }}">(Delete)</a></sup>
                         {% endif %}
                     </span>
 

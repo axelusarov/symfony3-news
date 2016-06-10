@@ -37,7 +37,6 @@ class DefaultController extends Controller
      */
     public function showArticleAction(Article $article)
     {
-        dump($article);
         return $this->render('default/show_article.html.twig', [
             'article' => $article
         ]);

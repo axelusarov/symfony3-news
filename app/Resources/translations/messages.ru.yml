@@ -14,7 +14,7 @@ user:
     created:  "Пользователь <strong>'%username%'</strong> c Email`ом <strong>'%email%'</strong> был успешно зарегистрирован.<br/>Теперь вы можете войти в сиистему используя свои данные."
 
 articles:
-    posted_by:  'Добавил %author%'
+    posted_by:  'Добавил <strong>%author%</strong>'
     posted_on: '%date%'
     full_article_linktext:  'Подробнее...'
     delete: 'удалить'

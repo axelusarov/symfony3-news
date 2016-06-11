@@ -15,7 +15,7 @@ class AddArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('fullText', TextareaType::class)
-            ->add('add', SubmitType::class, array('label' => 'Add article'));
+            ->add('add', SubmitType::class, array('label' => 'articles.submit'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

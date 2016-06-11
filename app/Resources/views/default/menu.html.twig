@@ -1,15 +1,17 @@
+{% trans_default_domain 'navigation' %}
+
 {% block menu %}
         <div class="row header">
             <nav id="top-menu" class="col-xs-12">
                 <ul>
-                    <li><a href="{{ path('homepage') }}">Main page</a></li>
-                    <li><a href="{{ path('new_article') }}">New Article</a></li>
+                    <li><a href="{{ path('homepage') }}">{{ 'menu.main_page' | trans}}</a></li>
+                    <li><a href="{{ path('new_article') }}">{{ 'menu.new_article' | trans }}</a></li>
 
                     {% if is_granted('ROLE_USER') %}
-                        <li><a href="{{ path('fos_user_security_logout') }}">Logout (<strong>{{ app.user.username }}</strong>)</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout' | trans({}, 'FOSUserBundle') }} (<strong>{{ app.user.username }}</strong>)</a></li>
                     {% else %}
-                        <li><a href="{{ path('register_user') }}">Register</a></li>
-                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li><a href="{{ path('register_user') }}">{{ 'layout.register' | trans({}, 'FOSUserBundle') }}</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login' | trans({}, 'FOSUserBundle')}}</a></li>
                     {% endif %}
                 </ul>
             </nav>

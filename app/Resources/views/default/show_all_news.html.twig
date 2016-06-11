@@ -8,14 +8,18 @@
                     <span id="article-title" class="h2">
                         <a href="{{ path('show_article', { 'id': article.id }) }}">{{ article.title }}</a>
                         {% if is_granted('ROLE_ADMIN') %}
-                            <sup><a style="" href="{{ path('delete_article', {'id': article.id}) }}">(Delete)</a></sup>
+                            <sup><a style="" href="{{ path('delete_article', {'id': article.id}) }}">({{ 'articles.delete' | trans }})</a></sup>
                         {% endif %}
                     </span>
 
-                    <div id="article-info">Posted by <strong>{{ article.author }}</strong> on {{ article.date |date("d/m/Y h:m:i")}} {#February 07, 2013#} &bull; <a href="{{ path('show_article', { 'id': article.id }) }}">Full article</a></div>
-                    <div id="article-content">
+                    <div id="article-info">
+                        {{ 'articles.posted_by' | trans({'%author%': article.author}) }}
+                        {{ 'articles.posted_on' | trans({'%date%': article.date | date("d/m/Y h:m:i")}) }} &bull;
+                        <a href="{{ path('show_article', { 'id': article.id }) }}">{{ 'articles.full_article_linktext' | trans }}</a>
                     </div>
-                    <p>{{ article.fullText |length > 300 ? article.fullText|slice(0, 300) ~ '...' : article.fullText }}</p>
+                    <div id="article-content">
+                        <p>{{ article.fullText |length > 300 ? article.fullText|slice(0, 300) ~ '...' : article.fullText }}</p>
+                    </div>
                 </div>
             </div>
             {% if loop.index % 2 == 0 and loop.index != 0%}

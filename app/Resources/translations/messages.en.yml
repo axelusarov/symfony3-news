@@ -1,0 +1,23 @@
+registration:
+    caption:  'Registration'
+    username: Username
+    email:  E-mail
+    password: Password
+    first_name: Name
+    last_name:  Surname
+    submit: Register
+
+user:
+    created:  "User with username <strong>'%username%'</strong> and E-mail <strong>'%email%'</strong> was registered.<br/>Now you can login with your account data."
+
+articles:
+    posted_by:  'Posted by %author%'
+    posted_on:  'on %date%'
+    full_article_linktext:  'Read more...'
+    delete: 'delete'
+    create_caption: 'Create New Article'
+    title:  'Title'
+    author: 'Author'
+    full_text:  'Full text'
+    submit: 'Add article'
+    created:  "Article <strong>'%title%'</strong> was successfully created."

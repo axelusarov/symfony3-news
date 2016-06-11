@@ -3,25 +3,25 @@
 {% block body %}
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h1>Create new Article</h1>
+            <h1>{{ "articles.create_caption" | trans}}</h1>
 
             {{ form_start(form) }}
             {{ form_errors(form) }}
 
             <div>
-                {{ form_label(form.title, 'Title:') }}
+                {{ form_label(form.title, "articles.title") }}
                 {{ form_errors(form.title) }}
                 {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
             </div>
 
             <div>
-                <label for="add_article_author">Author:</label>
+                <label for="add_article_author">{{ "articles.author" | trans}}</label>
                 <input type="text" class="form-control" value="{{ username }}" id="add_article_author" disabled>
                 {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" class="form-control" />#}
             </div>
 
             <div>
-                {{ form_label(form.fullText, 'Full text:') }}
+                {{ form_label(form.fullText, "articles.full_text") }}
                 {{ form_errors(form.fullText) }}
                 {{ form_widget(form.fullText, {'attr': {'class': 'form-control'}}) }}
             </div>

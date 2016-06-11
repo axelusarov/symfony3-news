@@ -1,0 +1,27 @@
+common:
+    go_to_homepage: 'Перейти на главную'
+
+registration:
+    caption:  'Регистрация нового пользователя'
+    username: Имя пользователя
+    email:  E-mail
+    password: Пароль
+    first_name: Имя
+    last_name:  Фамилия
+    submit: Регистрация
+
+user:
+    created:  "Пользователь <strong>'%username%'</strong> c Email`ом <strong>'%email%'</strong> был успешно зарегистрирован.<br/>Теперь вы можете войти в сиистему используя свои данные."
+
+articles:
+    posted_by:  'Добавил %author%'
+    posted_on: '%date%'
+    full_article_linktext:  'Подробнее...'
+    delete: 'удалить'
+    create_caption: 'Добавление новости'
+    title:  'Заголовок новости'
+    author: 'Автор'
+    full_text:  'Текст'
+    submit: 'Добавить новость'
+    created:  "Новость <strong>'%title%'</strong> была успешно добавлена на сайт."
+    create_another_one: "Добавить еще"

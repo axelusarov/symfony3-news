@@ -4,15 +4,14 @@
     <div class="row">
         <div class="col-xs-10 col-md-offset-1">
             <h2>
-                User with username <strong>'{{ userName }}'</strong> and E-mail <strong>'{{ userEmail }}'</strong> was registered. <br/>
-                Now you can login with your account data.
+                {{ "user.created" | trans({"%username%": userName, "%email%": userEmail}) | raw }}
             </h2>
             <br/>
         </div>
 
         <div class="row">
             <div class="col-xs-12 centered-block">
-                <a href="/login" class="btn btn-danger">Login</a>
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-success">Login</a>
                 <a href="{{ path('homepage') }}" class="btn btn-default">Go to Homepage</a>
             </div>
         </div>

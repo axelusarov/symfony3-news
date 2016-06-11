@@ -72,7 +72,7 @@ class DefaultController extends Controller
             return new Response('user "' . $user->getEmail() . '" created');
         }
 
-        return $this->render('default/register.html.twig', array(
+        return $this->render('default/register_custom.html.twig', array(
             'form' => $form->createView(),
         ));
     }

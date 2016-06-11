@@ -145,6 +145,9 @@ class DefaultController extends Controller
     public function setLanguage(Request $request, $_locale)
     {
         $request->getSession()->set('_locale', $_locale);
-        return $this->redirectToRoute('homepage');
+
+        $backLink= $request->server->get('HTTP_REFERER');
+
+        return $this->redirect($backLink);
     }
 }

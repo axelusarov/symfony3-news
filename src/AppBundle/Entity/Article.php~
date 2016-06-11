@@ -164,9 +164,4 @@ class Article implements Translatable
     {
         return $this->title;
     }
-
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
-    }
 }

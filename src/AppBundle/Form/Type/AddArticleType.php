@@ -15,13 +15,16 @@ class AddArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('fullText', TextareaType::class)
+            ->add('title_ru', null, ['mapped' => false, 'required' => false])
+            ->add('fullText_ru', TextareaType::class, ['mapped' => false, 'required' => false])
             ->add('add', SubmitType::class, array('label' => 'articles.submit'));
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Article'
+            'data_class' => 'AppBundle\Entity\Article',
+            'attr'=>array('novalidate'=>'novalidate')
         ));
     }
 }

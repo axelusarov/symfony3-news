@@ -85,7 +85,7 @@ class DefaultController extends Controller
      */
     public function createArticleAction(Request $request)
     {
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             throw $this->createAccessDeniedException();
         }
 
@@ -97,9 +97,19 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $title_ru = $form->get('title_ru')->getData();
+            $fullText_ru = $form->get('fullText_ru')->getData();
+
             $article->setAuthor($user);
 
             $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+
+            $article->setTitle($title_ru);
+            $article->setFullText($fullText_ru);
+            $article->setTranslatableLocale('ru');
             $em->persist($article);
             $em->flush();
 

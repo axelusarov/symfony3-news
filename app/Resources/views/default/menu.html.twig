@@ -16,17 +16,14 @@
                 </ul>
             </nav>
 
-            {% set enLocale = '' %}
-            {% set ruLocale = '' %}
-            {% if app.request.locale == 'ru' %}
-                {% set ruLocale = 'active' %}
-            {% else %}
-                {% set enLocale = 'active' %}
-            {% endif %}
-
             <div class="btn-group lang-switcher" role="group" aria-label="set-locale">
-                <a type="button" href="{{ path('set_locale', {"_locale": "en"}) }}" class="btn btn-default {{ enLocale }}">EN</a>
-                <a type="button" href="{{ path('set_locale', {"_locale": "ru"}) }}" class="btn btn-default {{ ruLocale }}">RU</a>
+                {% if app.request.locale == 'ru' %}
+                    <a type="button" href="{{ path('set_locale', {"_locale": "en"}) }}" class="btn btn-default">EN</a>
+                    <a type="button" href="{{ path('set_locale', {"_locale": "ru"}) }}" class="btn btn-default active">RU</a>
+                {% else %}
+                    <a type="button" href="{{ path('set_locale', {"_locale": "en"}) }}" class="btn btn-default active">EN</a>
+                    <a type="button" href="{{ path('set_locale', {"_locale": "ru"}) }}" class="btn btn-default">RU</a>
+                {% endif %}
             </div>
         </div>
 {% endblock %}

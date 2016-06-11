@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'form/form_errors.html.twig' %}
 
 {% block body %}
     <div class="row">
@@ -8,29 +9,61 @@
             {{ form_start(form) }}
             {{ form_errors(form) }}
 
-            <div>
-                {{ form_label(form.title, "articles.title") }}
-                {{ form_errors(form.title) }}
-                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Info:</strong> {{ "articles.fill_form_hint" | trans }}
             </div>
 
             <div>
                 <label for="add_article_author">{{ "articles.author" | trans}}</label>
                 <input type="text" class="form-control" value="{{ username }}" id="add_article_author" disabled>
-                {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" class="form-control" />#}
             </div>
 
-            <div>
-                {{ form_label(form.fullText, "articles.full_text") }}
-                {{ form_errors(form.fullText) }}
-                {{ form_widget(form.fullText, {'attr': {'class': 'form-control'}}) }}
+            <ul class="nav nav-tabs" id="translation_tabs">
+                    <li class="active"><a data-toggle="tab" href="#en-locale">EN</a></li>
+                    <li><a data-toggle="tab" href="#ru-locale">RU</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="en-locale" class="tab-pane fade in active">
+                    <h3>{{ "articles.fill_form_en" | trans}}</h3>
+
+                    <div>
+                        {{ form_label(form.title, "articles.title") }}
+                        {{ form_errors(form.title) }}
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.fullText, "articles.full_text") }}
+                        {{ form_errors(form.fullText) }}
+                        {{ form_widget(form.fullText, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                </div>
+                <div id="ru-locale" class="tab-pane fade">
+                    <h3>{{ "articles.fill_form_ru" | trans}}</h3>
+
+                    <div>
+                        {{ form_label(form.title_ru, "articles.title") }}
+                        {{ form_errors(form.title_ru) }}
+                        {{ form_widget(form.title_ru, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.fullText_ru, "articles.full_text") }}
+                        {{ form_errors(form.fullText_ru) }}
+                        {{ form_widget(form.fullText_ru, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                </div>
             </div>
 
             <div>
                 {{ form_widget(form.add, {'attr': {'class': 'btn btn-success pull-right'}}) }}
             </div>
+
             {{ form_end(form) }}
         </div>
     </div>
 {%  endblock %}
-

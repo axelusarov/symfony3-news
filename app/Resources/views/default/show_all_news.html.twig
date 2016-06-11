@@ -8,12 +8,12 @@
                     <span id="article-title" class="h2">
                         <a href="{{ path('show_article', { 'id': article.id }) }}">{{ article.title }}</a>
                         {% if is_granted('ROLE_ADMIN') %}
-                            <sup><a style="" href="{{ path('delete_article', {'id': article.id}) }}">({{ 'articles.delete' | trans }})</a></sup>
+                            <sup><a href="{{ path('delete_article', {'id': article.id}) }}">({{ 'articles.delete' | trans }})</a></sup>
                         {% endif %}
                     </span>
 
                     <div id="article-info">
-                        {{ 'articles.posted_by' | trans({'%author%': article.author}) }}
+                        {{ 'articles.posted_by' | trans({'%author%': article.author}) | raw }}
                         {{ 'articles.posted_on' | trans({'%date%': article.date | date("d/m/Y h:m:i")}) }} &bull;
                         <a href="{{ path('show_article', { 'id': article.id }) }}">{{ 'articles.full_article_linktext' | trans }}</a>
                     </div>

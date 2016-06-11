@@ -69,7 +69,6 @@ class DefaultController extends Controller
                 'userEmail' => $user->getEmail(),
                 'userName' => $user->getUsername()
             ]);
-            return new Response('user "' . $user->getEmail() . '" created');
         }
 
         return $this->render('default/register_custom.html.twig', array(
@@ -103,15 +102,25 @@ class DefaultController extends Controller
             $article->setAuthor($user);
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($article);
-            $em->flush();
 
+            $em->getConnection()->beginTransaction();
+            try{
+                $em->persist($article);
+                $em->flush();
 
-            $article->setTitle($title_ru);
-            $article->setFullText($fullText_ru);
-            $article->setTranslatableLocale('ru');
-            $em->persist($article);
-            $em->flush();
+                if(!is_null($title_ru) && !is_null($fullText_ru)){
+                    $article->setTitle($title_ru);
+                    $article->setFullText($fullText_ru);
+                    $article->setTranslatableLocale('ru');
+                    $em->persist($article);
+                    $em->flush();
+                }
+
+                $em->getConnection()->commit();
+            } catch(\Exception $e){
+                $em->getConnection()->rollback();
+                throw $e;
+            }
 
             return $this->render('default\article_created.html.twig', array(
                 'title' => $article->getTitle()

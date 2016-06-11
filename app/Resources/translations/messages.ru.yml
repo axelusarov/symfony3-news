@@ -25,3 +25,4 @@ articles:
     submit: 'Добавить новость'
     created:  "Новость <strong>'%title%'</strong> была успешно добавлена на сайт."
     create_another_one: "Добавить еще"
+    deleted:  "Новость <strong>'%title%'</strong> была успешно удалена."

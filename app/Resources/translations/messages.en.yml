@@ -21,3 +21,4 @@ articles:
     full_text:  'Full text'
     submit: 'Add article'
     created:  "Article <strong>'%title%'</strong> was successfully created."
+    deleted:  "Article <strong>'%title%'</strong> was successfully deleted."

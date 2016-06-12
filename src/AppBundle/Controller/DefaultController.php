@@ -3,13 +3,16 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 //use AppBundle\Entity\User;
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Comment;
 use AppBundle\Form\Type\UserType;
 use AppBundle\Form\Type\AddArticleType;
+use AppBundle\Form\Type\AddCommentType;
 
 class DefaultController extends Controller
 {
@@ -35,10 +38,14 @@ class DefaultController extends Controller
      *
      * @Route("/show/{id}", name="show_article")
      */
-    public function showArticleAction(Article $article)
+    public function showArticleAction(Article $article, Request $request)
     {
+        $form = $this->createForm(AddCommentType::class);
+
         return $this->render('default/show_article.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'form'  =>  $form->createView(),
+            'comments' => $article->getComments()->toArray()
         ]);
     }
 
@@ -168,5 +175,41 @@ class DefaultController extends Controller
         $backLink= $request->server->get('HTTP_REFERER');
 
         return $this->redirect($backLink);
+    }
+
+    /**
+     * @param Article $article
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/add_comment/{id}", name="add_comment")
+     * @Method("POST")
+     */
+    public function addCommentAction(Request $request, Article $article)
+    {
+        // writing comments allowed only for registered users
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+
+            $flash_trans = $this->get('translator')->trans('comments.must_login');
+            $this->addFlash('notice', $flash_trans);
+
+            throw $this->createAccessDeniedException();
+        }
+
+        $form = $this->createForm(AddCommentType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $comment = new Comment();
+            $comment->setCreatedByName($this->getUser()->getUserName());
+            $comment->setText($text = $form->get('text')->getData());
+            $comment->setArticle($article);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('show_article', ['id' => $article->getId()]) . '#comments');
     }
 }

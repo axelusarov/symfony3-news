@@ -1,5 +1,6 @@
 common:
     go_to_homepage: 'Go to Homepage'
+    error:  'Error'
 
 registration:
     caption:  'Registration'
@@ -29,3 +30,10 @@ articles:
     fill_form_en: 'English version of the article.'
     fill_form_ru: 'Russian version of the article.'
     fill_form_hint: 'Please dont forget to fill article`s information for all languages too.'
+
+comments:
+    must_login:  'You must login for writing comments!'
+    text: 'Comment'
+    submit: 'Add comment'
+    caption:  'Comments'
+    posted: 'by'

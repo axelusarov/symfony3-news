@@ -14,7 +14,7 @@
 
                     <div id="article-info">
                         {{ 'articles.posted_by' | trans({'%author%': article.author}) | raw }}
-                        {{ 'articles.posted_on' | trans({'%date%': article.date | date("d/m/Y h:m:i")}) }} &bull;
+                        {{ 'articles.posted_on' | trans({'%date%': article.date | date("d/m/Y H:m")}) }} &bull;
                         <a href="{{ path('show_article', { 'id': article.id }) }}">{{ 'articles.full_article_linktext' | trans }}</a>
                     </div>
                     <div id="article-content">

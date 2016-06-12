@@ -12,7 +12,7 @@
 
                     <div id="article-info">
                         {{ 'articles.posted_by' | trans({'%author%': article.author}) | raw }}
-                        {{ 'articles.posted_on' | trans({'%date%': article.date | date("d/m/Y h:m:i")}) }}
+                        {{ 'articles.posted_on' | trans({'%date%': article.date | date("d/m/Y H:m")}) }}
                     </div>
 
                     <div id="article-content">
@@ -21,5 +21,8 @@
 
                 </div>
             </div>
+
+        {% include 'default/comments.html.twig' %}
+
     </div>
 {% endblock %}

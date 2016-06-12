@@ -157,11 +157,3 @@ h1, h2{
 	min-width: 90px;
 	height: auto;
 }
-/*
-#top-menu:after{
-	float: right;
-	!*position: relative;*!
-	content: 'content';
-	!*top: 0;*!
-	!*right: 0;*!
-}*/

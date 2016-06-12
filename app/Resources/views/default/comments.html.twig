@@ -1,0 +1,39 @@
+<div class="row">
+    <div id="comments" class="col-md-10 col-md-offset-1">
+        <h2 class="page-header">{{ "comments.caption" | trans }}</h2>
+        <section class="comment-list">
+            <article class="row">
+                {% for comment in comments %}
+                    <div class="col-md-6 col-sm-6">
+                        <div class="panel panel-default arrow left">
+                            <div class="panel-heading right">{{ "comments.posted" | trans }}: <strong>{{ comment.createdByName }}</strong><span class="pull-right">{{ comment.createdOn | date("d/m/Y H:m") }}</span></div>
+                            <div class="panel-body">
+                                <div class="comment-post">
+                                    <p>
+                                        {{ comment.text }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </article>
+        </section>
+
+        <div class="col-sm-13">
+            {{ form_start(form, {'action': path('add_comment', {'id': article.id})}) }}
+            {{ form_errors(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.text, "comments.text") }}
+                {{ form_errors(form.text) }}
+                {{ form_widget(form.text, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+</div>

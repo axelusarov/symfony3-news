@@ -7,12 +7,20 @@
     <div class="row">
         <h1> {{ 'security.login.caption'|trans }}</h1>
         {% if error %}
-            <div class="col-sm-8 col-sm-offset-2 alert alert-danger" role="alert">
+            <div class="col-sm-6 col-sm-offset-3 alert alert-danger" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 <span class="sr-only">Error:</span>
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}
+
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="col-sm-6 col-sm-offset-3 alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">{{ "common.error" | trans({}, 'messages') }}:</span>
+                {{ flash_message }}
+            </div>
+        {% endfor %}
 
             <div class="col-xs-6 col-xs-offset-3">
                 <form class="form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">

@@ -157,3 +157,6 @@ h1, h2{
 	min-width: 90px;
 	height: auto;
 }
+#comments{
+	word-break: break-word;
+}

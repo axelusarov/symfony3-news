@@ -49,7 +49,7 @@ label.required:after {
 #site-logo{
 	margin-top: 13px;
 	padding: 20px 0;
-	background-color: brown;
+	background-color: #397fc9;
 }
 #site-logo span{
 	color: white;
@@ -66,7 +66,7 @@ label.required:after {
 	line-height: 22px;
 }
 #main a{
-	color: #d24a44;
+	color: #397fc9;
 }
 #article-block{
 	margin: 0 20px 20px;
@@ -76,7 +76,7 @@ label.required:after {
 }
 #article-title{
 	display: block;
-	color: #d24a44;
+	color: #397fc9;
 	margin-bottom: 0;
 }
 #article-info{
@@ -89,12 +89,11 @@ label.required:after {
 	background-color: yellow;
 }
 #top-menu {
-	background-color: #da2f27;
+	background-color: #48A4E7;
     position:absolute;
     overflow:hidden;
     height:60px;
     padding:20px 0;
-	/*width: 90%;*/
 }
 #top-menu ul {
     list-style:none;
@@ -118,7 +117,7 @@ label.required:after {
     color: white;
 }
 #top-menu ul li a:hover {
-    background-color:#9f1615;
+    background-color: #397fc9;
     color:#ffffff
 }
 #footer{
